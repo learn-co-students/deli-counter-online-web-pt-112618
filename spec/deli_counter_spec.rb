@@ -7,8 +7,7 @@ describe 'Deli Counter' do
   describe "#line" do
     context "there is nobody in line" do
       it "should say the line is empty" do
-        # This line checks the current standard output (your terminal screen)
-        # to make sure the correct output has been puts'ed.
+        puts "The line is currently empty"
         expect($stdout).to receive(:puts).with("The line is currently empty.")
         line(katz_deli)
       end
@@ -35,6 +34,15 @@ describe 'Deli Counter' do
         expect(katz_deli).to eq(["Ada"])
       end
     end
+    
+    line = ["Amanda", "Annette", "Ruchi", "Jason", "Logan", "Spencer", "Avi", "Joe", "Rachel", "Lindsey"]
+    counter = 1
+    line << "Naina"
+    line.each do |name|
+      puts "This is the sequence #{name}."
+      counter += 1
+    end
+  end 
 
     context "there are already people in line" do
       it "should add a person to the end of the line" do
@@ -63,6 +71,15 @@ describe 'Deli Counter' do
         now_serving(katz_deli)
       end
     end
+
+now_serving = ["Amanda", "Annette", "Ruchi", "Jason", "Logan", "Spencer", "Avi", "Joe", "Rachel", "Lindsey", "Naina"]
+counter = 1
+now_serving.each do |next|
+  puts "  The next person is #{next}"
+  counter -= 1 
+end
+  
+
 
     context "there are people in line" do
       it "should serve the first person in line and remove them from the queue" do
